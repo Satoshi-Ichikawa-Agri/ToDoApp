@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>タイトル</th>
+            <th>概要</th>
+            <th>期日</th>
+            <th>完了</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ object.summary }}</td>
+            <td>{{ object.detail }}</td>
+            <td>{{ object.limit }}</td>
+            <td>{{ object.done }}</td>
+        </tr>
+    </tbody>
+</table>
+<a class="btn btn-secondary mt-3" href={% url 'index' %}>戻る</a>
+{% endblock %}

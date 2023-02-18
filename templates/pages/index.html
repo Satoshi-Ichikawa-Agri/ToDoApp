@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h2>INDEX</h2>
+<hr />
+<p class="text-end">
+    <a href={% url 'create' %}>新規作成</a>
+</p>
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>タイトル</th>
+            <th>概要</th>
+            <th>期日</th>
+            <th>完了</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in object_list %}
+        <tr>
+            <td>{{ object.summary }}</td>
+            <td>{{ object.detail }}</td>
+            <td>{{ object.limit }}</td>
+            <td>{{ object.done }}</td>
+            <td>
+                <a class="btn btn-primary" href={% url 'details' object.pk %}>
+                    詳細</a> |
+                <a class="btn btn-primary" href={% url 'edit' object.pk %}>
+                    <i class="bi bi-pencil-square"></i>更新</a> |
+                <a class="btn btn-danger" href={% url 'delete' object.pk %}>
+                    <i class="bi bi-trash-fill"></i>削除</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
